@@ -51,6 +51,40 @@ router.get("/getalluser", (req, res) => { //查询所有用户
     })
 })
 
+router.get("/getalluserqiye", (req, res) => { //查询所有企业    
+    const sqlstr = "select * from user where role=2"
+    db.query(sqlstr, (err, result) => {
+        if (err) {
+            return res.send({
+                status: 1,
+                message: err.message
+            })
+        }
+        res.send({
+            status: 0,
+            message: "查询成功",
+            data: result
+        })
+    })
+})
+
+router.get("/getalluserceping", (req, res) => { //查询所有ceping    
+    const sqlstr = "select * from user where role=3"
+    db.query(sqlstr, (err, result) => {
+        if (err) {
+            return res.send({
+                status: 1,
+                message: err.message
+            })
+        }
+        res.send({
+            status: 0,
+            message: "查询成功",
+            data: result
+        })
+    })
+})
+
 router.get("/deleteuser", (req, res) => { //删除一个人
     const info = req.query
     const sqlstr = "delete from user where userId=?"

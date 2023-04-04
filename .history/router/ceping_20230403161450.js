@@ -113,46 +113,9 @@ router.get("/getallceping", (req, res) => { //查询所有测评
 
 router.get("/getcepingbygoodid", (req, res) => { //商品id查测评
     const info = req.query
-    const sqlstr = "select * from ceping where cepingGoodId=?"
-    db.query(sqlstr, info.cepingGoodId, (err, result) => {
-        if (err) {
-            return res.send({
-                status: 1,
-                message: err.message
-            })
-        }
-        console.log(result);
-        res.send({
-            status: 0,
-            message: "查询成功",
-            data: result
-        })
-    })
-})
-
-router.get("/getcepingbyuserid", (req, res) => { //商品id查测评
-    const info = req.query
-    const sqlstr = "select * from ceping where cepingerId=?"
-    db.query(sqlstr, info.cepingerId, (err, result) => {
-        if (err) {
-            return res.send({
-                status: 1,
-                message: err.message
-            })
-        }
-        console.log(result);
-        res.send({
-            status: 0,
-            message: "查询成功",
-            data: result
-        })
-    })
-})
-
-router.get("/getcepingbycepingid", (req, res) => { //测评id查测评
-    const info = req.query
-    const sqlstr = "select * from ceping where cepingId=?"
-    db.query(sqlstr, info.cepingId, (err, result) => {
+    console.log(info);
+    const sqlstr = "select * from ceping where cepingGoodId=" + info.cepingGoodId
+    db.query(sqlstr, (err, result) => {
         if (err) {
             return res.send({
                 status: 1,

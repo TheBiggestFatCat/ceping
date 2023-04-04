@@ -97,7 +97,7 @@ router.get("/getallshenqing", (req, res) => { //查询所有申请
 
 
 router.get("/deleteshenqing", (req, res) => { //删除
-    const info = req.query
+    const info = req.body
     const sqlstr = "delete from shenqing where shenqingId=?"
     db.query(sqlstr, info.shenqingId, (err, result) => {
         if (err) {
@@ -177,7 +177,7 @@ router.get("/oneshenqinggood", (req, res) => { //根据企业id查他有哪些�
 })
 
 router.get("/xiugaistatus", (req, res) => { //根据id修改status
-    const info = req.query
+    const info = req.body
     const sqlstr = "update shenqing set shenqingStatus=? where shenqingId=?"
     if (info.shenqingStatus == 2 || info.shenqingStatus == 3) {
         db.query(sqlstr, [info.shenqingStatus, info.shenqingId], (err, result) => {

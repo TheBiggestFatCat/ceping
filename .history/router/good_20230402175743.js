@@ -70,10 +70,10 @@ router.get("/getallgood", (req, res) => { //查询所有物品
     })
 })
 
-router.get("/getgoodbyid", (req, res) => { //根据id查
+router.get("/getgoodbyid", (req, res) => { //查询所有物品
     const info = req.query
-    const sqlstr = "select * from good where goodId= ?"
-    db.query(sqlstr, info.goodId, (err, result) => {
+    const sqlstr = "select * from good where goodId=?"
+    db.query(sqlstr, info.goodid, (err, result) => {
         if (err) {
             return res.send({
                 status: 1,
@@ -125,7 +125,7 @@ router.post("/searchgood", (req, res) => { //模糊查找所有good
     })
 })
 
-router.get("/getgoodbyuserid", (req, res) => { //查询所有测评byuserid
+router.get("/getgoodbyid", (req, res) => { //查询所有测评byuserid
     const info = req.query
 
     const sqlstr = "select * from good where goodProducterId=?"

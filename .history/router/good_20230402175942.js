@@ -125,7 +125,7 @@ router.post("/searchgood", (req, res) => { //模糊查找所有good
     })
 })
 
-router.get("/getgoodbyuserid", (req, res) => { //查询所有测评byuserid
+router.get("/getgoodbyid", (req, res) => { //查询所有测评byuserid
     const info = req.query
 
     const sqlstr = "select * from good where goodProducterId=?"

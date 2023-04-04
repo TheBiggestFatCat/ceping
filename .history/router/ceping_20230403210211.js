@@ -152,7 +152,7 @@ router.get("/getcepingbyuserid", (req, res) => { //商品id查测评
 router.get("/getcepingbycepingid", (req, res) => { //测评id查测评
     const info = req.query
     const sqlstr = "select * from ceping where cepingId=?"
-    db.query(sqlstr, info.cepingId, (err, result) => {
+    db.query(sqlstr, info.cepingerId, (err, result) => {
         if (err) {
             return res.send({
                 status: 1,
